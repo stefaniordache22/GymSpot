@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "GymSpot: Run app",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${env:USERPROFILE}/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "program": "${workspaceFolder}/open-browser.mjs",
+      "console": "internalConsole",
+      "preLaunchTask": "GymSpot: Start server",
+      "serverReadyAction": {
+        "pattern": "GymSpot ready: (http://localhost:5173)",
+        "uriFormat": "%s",
+        "action": "openExternally"
+      }
+    },
+    {
+      "name": "Run GymSpot server",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${env:USERPROFILE}/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "program": "${workspaceFolder}/open-browser.mjs",
+      "console": "internalConsole",
+      "preLaunchTask": "GymSpot: Start server",
+      "serverReadyAction": {
+        "pattern": "GymSpot ready: (http://localhost:5173)",
+        "uriFormat": "%s",
+        "action": "openExternally"
+      }
+    }
+  ]
+}
+

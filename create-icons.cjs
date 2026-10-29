@@ -1,0 +1,4 @@
+const {chromium}=require('playwright-core');
+(async()=>{const browser=await chromium.launch({headless:true,channel:'msedge'});try{for(const size of [180,192,512,1024]){const page=await browser.newPage({viewport:{width:size,height:size},deviceScaleFactor:1});await page.setContent(`<body style="margin:0"><svg width="${size}" height="${size}" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><rect width="512" height="512" rx="100" fill="#d4f36b"/><text x="256" y="330" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="270" fill="#172016">G.</text></svg></body>`);await page.screenshot({path:size===180?'assets/apple-touch-icon.png':`assets/icon-${size}.png`});await page.close();}}finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1});
+
+

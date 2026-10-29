@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [{
+    "label": "GymSpot: Start server",
+    "type": "process",
+    "command": "powershell.exe",
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/start.ps1"],
+    "options": { "cwd": "${workspaceFolder}" },
+    "isBackground": true,
+    "problemMatcher": {
+      "owner": "spotter",
+      "pattern": { "regexp": "^(UNMATCHABLE):(.*)$", "file": 1, "message": 2 },
+      "background": { "activeOnStart": true, "beginsPattern": "^Starting GymSpot", "endsPattern": "^GymSpot running at http://localhost:5173" }
+    },
+    "presentation": { "reveal": "always", "panel": "dedicated" },
+    "group": { "kind": "build", "isDefault": true },
+    "runOptions": { "instanceLimit": 1 }
+  }]
+}
+

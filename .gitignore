@@ -1,0 +1,16 @@
+node_modules/
+.pnpm-store/
+.env
+.env.*
+!.env.example
+*.log
+*.p12
+*.p8
+*.mobileprovision
+test-results/
+.playwright/
+www/
+.gymspot-data/
+ios/App/App/public/
+ios/App/Pods/
+ios/App/build/

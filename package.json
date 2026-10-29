@@ -1,0 +1,28 @@
+{
+  "name": "gymspot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env server.mjs",
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "check": "node --check app.js && node --check server.mjs && node --check mobile.js && node --check sw.js && node --check health.js && node --check health-core.js && node --check dropdowns.js && node --check moderation.js && node --check chat-server.mjs && node --check chat-client.js && node --check maps.js",
+    "test:mobile": "node mobile-test.cjs",
+    "build": "node scripts/build.mjs",
+    "ios:sync": "node scripts/build.mjs && node scripts/configure-ios.mjs && cap sync ios",
+    "test:gymspot": "node gymspot-test.cjs",
+    "test:features": "node backend-test.mjs && node features-test.cjs"
+  },
+  "dependencies": {
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/ios": "^8.5.2",
+    "@fontsource/inter": "^5.2.8",
+    "fflate": "^0.8.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.2",
+    "esbuild": "^0.28.2",
+    "playwright-core": "^1.63.0",
+    "xcode": "^3.0.1"
+  }
+}

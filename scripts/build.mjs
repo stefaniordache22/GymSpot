@@ -1,0 +1,10 @@
+import {build} from 'esbuild';
+import {mkdir,copyFile,cp,readFile,writeFile} from 'node:fs/promises';
+await mkdir('assets/vendor',{recursive:true});
+await build({stdin:{contents:"export {registerPlugin,Capacitor} from '@capacitor/core';export {unzipSync,strFromU8} from 'fflate';",resolveDir:process.cwd()},bundle:true,format:'esm',minify:true,outfile:'assets/vendor/health-runtime.js'});
+await mkdir('www',{recursive:true});
+for(const file of ['index.html','app.js','style.css','mobile.css','mobile.js','health.js','health-core.js','dropdowns.js','dropdowns.css','moderation.js','maps.js','chat-client.js','manifest.webmanifest'])await copyFile(file,`www/${file}`);
+await cp('assets','www/assets',{recursive:true});
+await mkdir('www/node_modules/@fontsource/inter/files',{recursive:true});
+for(const weight of [400,600,700])await copyFile(`node_modules/@fontsource/inter/files/inter-latin-${weight}-normal.woff2`,`www/node_modules/@fontsource/inter/files/inter-latin-${weight}-normal.woff2`);
+console.log('GymSpot web and bundled iOS assets built.');
